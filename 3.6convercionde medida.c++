@@ -16,4 +16,4 @@ int main() {
     cout << "Centimetros: " << cm << endl;
     cout << "Metros: " << metros << endl;
     return 0;
-}
+} // REALIZAR LA TRANSFORMACION DE PULGADAS A PIES
