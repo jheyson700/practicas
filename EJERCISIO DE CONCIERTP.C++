@@ -50,4 +50,4 @@ int main() {
     cout << "Total a pagar: $" << total_cost << endl;
 
     return 0;
-}
+} // TRABAJAR EL EJERCICIO CON SWITCH - CASE
