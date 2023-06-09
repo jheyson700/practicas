@@ -1,53 +1,69 @@
 #include <iostream>
-#include <string>
-
-using namespace std;
 
 int main() {
-    // Prices for each location
-    double price_general = 50.00;
-    double price_preferencia = 80.00;
-    double price_platea = 120.00;
-    double price_vip = 160.00;
+    int ubicacion;
+    int cantidad;
+    float total = 0.0;
+    bool esVIP = false;
+    int bebida;
 
-    // Variables to store the chosen location and number of tickets
-    string location;
-    int num_tickets;
+    std::cout << "Bienvenido al sistema de venta de entradas\n";
+    std::cout << "Por favor, seleccione la ubicación de las entradas:\n";
+    std::cout << "1. Ubicación General ($50.00)\n";
+    std::cout << "2. Preferencial ($80.00)\n";
+    std::cout << "3. Platea ($120.00)\n";
+    std::cout << "4. VIP ($160.00)\n";
+    std::cout << "Ingrese el número de opción: ";
+    std::cin >> ubicacion;
 
-    // Ask the user for the location and number of tickets
-    cout << "Ingrese la ubicacion (general, preferencia, platea o vip): ";
-    cin >> location;
-    cout << "Ingrese la cantidad de entradas: ";
-    cin >> num_tickets;
-
-    // Calculate the total cost based on the chosen location and number of tickets
-    double total_cost;
-    if (location == "general") {
-        total_cost = num_tickets * price_general;
-    } else if (location == "preferencia") {
-        total_cost = num_tickets * price_preferencia;
-    } else if (location == "platea") {
-        total_cost = num_tickets * price_platea;
-    } else if (location == "vip") {
-        total_cost = num_tickets * price_vip;
-        // If the location is VIP, ask the user to choose a drink
-        string drink;
-        cout << "Elija su bebida (gaseosa, cerveza o agua): ";
-        cin >> drink;
-        // Add the cost of the drink to the total cost
-        if (drink == "gaseosa" || drink == "cerveza") {
-            total_cost += 10.00;
-        } else if (drink == "agua") {
-            total_cost += 5.00;
-        }
-    } else {
-        // If the location is not valid, print an error message
-        cout << "Ubicacion no valida" << endl;
-        return 0;
+    switch (ubicacion) {
+        case 1:
+            total += 50.00;
+            break;
+        case 2:
+            total += 80.00;
+            break;
+        case 3:
+            total += 120.00;
+            break;
+        case 4:
+            total += 160.00;
+            esVIP = true;
+            break;
+        default:
+            std::cout << "Opción inválida. Saliendo del programa.\n";
+            return 0;
     }
 
-    // Print the total cost
-    cout << "Total a pagar: $" << total_cost << endl;
+    std::cout << "Ingrese la cantidad de entradas que desea comprar: ";
+    std::cin >> cantidad;
+
+    total *= cantidad;
+
+    if (esVIP) {
+        std::cout << "Por favor, seleccione su bebida preferida:\n";
+        std::cout << "1. Gaseosa\n";
+        std::cout << "2. Cerveza\n";
+        std::cout << "3. Agua\n";
+        std::cout << "Ingrese el número de opción: ";
+        std::cin >> bebida;
+
+        switch (bebida) {
+            case 1:
+                total += 10.00;
+                break;
+            case 2:
+                total += 15.00;
+                break;
+            case 3:
+                total += 5.00;
+                break;
+            default:
+                std::cout << "Opción inválida. No se agregará ninguna bebida.\n";
+        }
+    }
+
+    std::cout << "El total a pagar es: $" << total << std::endl;
 
     return 0;
-} // TRABAJAR EL EJERCICIO CON SWITCH - CASE
+}
